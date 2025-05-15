@@ -24,6 +24,7 @@
 #define LED_PIN2 2
 #define LED_PIN3 3
 #define LED_PIN4 4
+#define LED_PIN5 5
 #define LED_PIN15 15
 
 #define EXAMPLE_ESP_WIFI_SSID CONFIG_ESP_WIFI_SSID 
@@ -36,8 +37,11 @@
 
 
 //html pagina
-char on_resp[] = "<!DOCTYPE html><html><head><style type=\"text/css\">html {  font-family: Arial;  display: inline-block;  margin: 0px auto;  text-align: center;}h1{  color: #070812;  padding: 2vh;}.button {  display: inline-block;  background-color: #b30000; //red color  border: none;  border-radius: 4px;  color: white;  padding: 16px 40px;  text-decoration: none;  font-size: 30px;  margin: 2px;  cursor: pointer;}.button2 {  background-color: #364cf4; //blue color}.content {   padding: 50px;}.card-grid {  max-width: 800px;  margin: 0 auto;  display: grid;  grid-gap: 2rem;  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));}.card {  background-color: white;  box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);}.card-title {  font-size: 1.2rem;  font-weight: bold;  color: #034078}</style>  <title>ESP32 WEB SERVER</title>  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">  <link rel=\"icon\" href=\"data:,\">  <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.2/css/all.css\"    integrity=\"sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr\" crossorigin=\"anonymous\">  <link rel=\"stylesheet\" type=\"text/css\" ></head><body>  <h2>ESP32 WEB SERVER</h2>  <div class=\"content\">    <div class=\"card-grid\">      <div class=\"card\">        <p><i class=\"fas fa-lightbulb fa-2x\" style=\"color:#c81919;\"></i>     <strong>GPIO2</strong></p>        <p>GPIO state: <strong> ON</strong></p>        <p>          <a href=\"/led2on\"><button class=\"button\">ON</button></a>          <a href=\"/led2off\"><button class=\"button button2\">OFF</button></a>        </p>      </div>    </div>  </div></body></html>"; 
-char off_resp[] = "<!DOCTYPE html><html><head><style type=\"text/css\">html {  font-family: Arial;  display: inline-block;  margin: 0px auto;  text-align: center;}h1{  color: #070812;  padding: 2vh;}.button {  display: inline-block;  background-color: #b30000; //red color  border: none;  border-radius: 4px;  color: white;  padding: 16px 40px;  text-decoration: none;  font-size: 30px;  margin: 2px;  cursor: pointer;}.button2 {  background-color: #364cf4; //blue color}.content {   padding: 50px;}.card-grid {  max-width: 800px;  margin: 0 auto;  display: grid;  grid-gap: 2rem;  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));}.card {  background-color: white;  box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);}.card-title {  font-size: 1.2rem;  font-weight: bold;  color: #034078}</style>  <title>ESP32 WEB SERVER</title>  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">  <link rel=\"icon\" href=\"data:,\">  <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.2/css/all.css\"    integrity=\"sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr\" crossorigin=\"anonymous\">  <link rel=\"stylesheet\" type=\"text/css\"></head><body>  <h2>ESP32 WEB SERVER</h2>  <div class=\"content\">    <div class=\"card-grid\">      <div class=\"card\">        <p><i class=\"fas fa-lightbulb fa-2x\" style=\"color:#c81919;\"></i>     <strong>GPIO2</strong></p>        <p>GPIO state: <strong> OFF</strong></p>        <p>          <a href=\"/led2on\"><button class=\"button\">ON</button></a>          <a href=\"/led2off\"><button class=\"button button2\">OFF</button></a>        </p>      </div>    </div>  </div></body></html>"; 
+/* HTML response when GPIO is ON */
+char on_resp[] = "<!DOCTYPE html><html><head><style type=\"text/css\">html {  font-family: Arial;  display: inline-block;  margin: 0px auto;  text-align: center;}h1{  color: #070812;  padding: 2vh;}.button {  display: inline-block;  background-color: #b30000; //red color  border: none;  border-radius: 4px;  color: white;  padding: 16px 40px;  text-decoration: none;  font-size: 30px;  margin: 2px;  cursor: pointer;}.button2 {  background-color: #364cf4; //blue color}.content {   padding: 50px;}.card-grid {  max-width: 800px;  margin: 0 auto;  display: grid;  grid-gap: 2rem;  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));}.card {  background-color: white;  box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);}.card-title {  font-size: 1.2rem;  font-weight: bold;  color: #034078}</style>  <title>ESP32 WEB SERVER</title>  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">  <link rel=\"icon\" href=\"data:,\">  <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.2/css/all.css\"    integrity=\"sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr\" crossorigin=\"anonymous\">  <link rel=\"stylesheet\" type=\"text/css\" ></head><body>  <h2>ESP32 WEB SERVER</h2>  <div class=\"content\">    <div class=\"card-grid\">      <div class=\"card\">        <p><i class=\"fas fa-lightbulb fa-2x\" style=\"color:#c81919;\"></i>     <strong>GPIO2</strong></p>        <p>GPIO state: <strong> ON</strong></p>        <p>          <a href=\"/led2on\"><button class=\"button\">ON</button></a>          <a href=\"/led2off\"><button class=\"button button2\">OFF</button></a>        </p>      </div>      <div class=\"card\">        <p><i class=\"fas fa-lightbulb fa-2x\" style=\"color:#c81919;\"></i>     <strong>GPIO3</strong></p>        <p>GPIO state: <strong> ON</strong></p>        <p>          <a href=\"/led3on\"><button class=\"button\">ON</button></a>          <a href=\"/led3off\"><button class=\"button button2\">OFF</button></a>        </p>      </div>      <div class=\"card\">        <p><i class=\"fas fa-lightbulb fa-2x\" style=\"color:#c81919;\"></i>     <strong>GPIO4</strong></p>        <p>GPIO state: <strong> ON</strong></p>        <p>          <a href=\"/led4on\"><button class=\"button\">ON</button></a>          <a href=\"/led4off\"><button class=\"button button2\">OFF</button></a>        </p>      </div>      <div class=\"card\">        <p><i class=\"fas fa-lightbulb fa-2x\" style=\"color:#c81919;\"></i>     <strong>GPIO5</strong></p>        <p>GPIO state: <strong> ON</strong></p>        <p>          <a href=\"/led5on\"><button class=\"button\">ON</button></a>          <a href=\"/led5off\"><button class=\"button button2\">OFF</button></a>        </p>      </div>      <div class=\"card\">        <p><i class=\"fas fa-lightbulb fa-2x\" style=\"color:#c81919;\"></i>     <strong>GPIO15</strong></p>        <p>GPIO state: <strong> ON</strong></p>        <p>          <a href=\"/led15on\"><button class=\"button\">ON</button></a>          <a href=\"/led15off\"><button class=\"button button2\">OFF</button></a>        </p>      </div>    </div>  </div></body></html>";
+
+/* HTML response when GPIO is OFF */
+char off_resp[] = "<!DOCTYPE html><html><head><style type=\"text/css\">html {  font-family: Arial;  display: inline-block;  margin: 0px auto;  text-align: center;}h1{  color: #070812;  padding: 2vh;}.button {  display: inline-block;  background-color: #b30000; //red color  border: none;  border-radius: 4px;  color: white;  padding: 16px 40px;  text-decoration: none;  font-size: 30px;  margin: 2px;  cursor: pointer;}.button2 {  background-color: #364cf4; //blue color}.content {   padding: 50px;}.card-grid {  max-width: 800px;  margin: 0 auto;  display: grid;  grid-gap: 2rem;  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));}.card {  background-color: white;  box-shadow: 2px 2px 12px 1px rgba(140,140,140,.5);}.card-title {  font-size: 1.2rem;  font-weight: bold;  color: #034078}</style>  <title>ESP32 WEB SERVER</title>  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">  <link rel=\"icon\" href=\"data:,\">  <link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.7.2/css/all.css\"    integrity=\"sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr\" crossorigin=\"anonymous\">  <link rel=\"stylesheet\" type=\"text/css\" ></head><body>  <h2>ESP32 WEB SERVER</h2>  <div class=\"content\">    <div class=\"card-grid\">      <div class=\"card\">        <p><i class=\"fas fa-lightbulb fa-2x\" style=\"color:#c81919;\"></i>     <strong>GPIO2</strong></p>        <p>GPIO state: <strong> OFF</strong></p>        <p>          <a href=\"/led2on\"><button class=\"button\">ON</button></a>          <a href=\"/led2off\"><button class=\"button button2\">OFF</button></a>        </p>      </div>      <div class=\"card\">        <p><i class=\"fas fa-lightbulb fa-2x\" style=\"color:#c81919;\"></i>     <strong>GPIO3</strong></p>        <p>GPIO state: <strong> OFF</strong></p>        <p>          <a href=\"/led3on\"><button class=\"button\">ON</button></a>          <a href=\"/led3off\"><button class=\"button button2\">OFF</button></a>        </p>      </div>      <div class=\"card\">        <p><i class=\"fas fa-lightbulb fa-2x\" style=\"color:#c81919;\"></i>     <strong>GPIO4</strong></p>        <p>GPIO state: <strong> OFF</strong></p>        <p>          <a href=\"/led4on\"><button class=\"button\">ON</button></a>          <a href=\"/led4off\"><button class=\"button button2\">OFF</button></a>        </p>      </div>      <div class=\"card\">        <p><i class=\"fas fa-lightbulb fa-2x\" style=\"color:#c81919;\"></i>     <strong>GPIO5</strong></p>        <p>GPIO state: <strong> OFF</strong></p>        <p>          <a href=\"/led5on\"><button class=\"button\">ON</button></a>          <a href=\"/led5off\"><button class=\"button button2\">OFF</button></a>        </p>      </div>      <div class=\"card\">        <p><i class=\"fas fa-lightbulb fa-2x\" style=\"color:#c81919;\"></i>     <strong>GPIO15</strong></p>        <p>GPIO state: <strong> OFF</strong></p>        <p>          <a href=\"/led15on\"><button class=\"button\">ON</button></a>          <a href=\"/led15off\"><button class=\"button button2\">OFF</button></a>        </p>      </div>    </div>  </div></body></html>";
 
 static const char *TAG = "espressif"; // TAG for debug
 int led_state = 0;
@@ -52,6 +56,7 @@ static httpd_handle_t my_server_handle = NULL;
 
 
 // Forward declarations for all HTTP handler functions
+/* ADD/EDIT FUNCTIONS FOR MORE/LESS BUTTONS HERE */
 esp_err_t get_req_handler(httpd_req_t *req);
 esp_err_t led_on_handler(httpd_req_t *req);
 esp_err_t led_off_handler(httpd_req_t *req);
@@ -59,10 +64,13 @@ esp_err_t led3_on_handler(httpd_req_t *req);
 esp_err_t led3_off_handler(httpd_req_t *req);
 esp_err_t led4_on_handler(httpd_req_t *req);
 esp_err_t led4_off_handler(httpd_req_t *req);
+esp_err_t led5_on_handler(httpd_req_t *req);
+esp_err_t led5_off_handler(httpd_req_t *req);
 esp_err_t led15_on_handler(httpd_req_t *req);
 esp_err_t led15_off_handler(httpd_req_t *req);
 
-
+/* ADD/EDIT FUNCTIONS FOR MORE/LESS BUTTONS HERE */
+// Define the URI handlers
 httpd_uri_t uri_get = { 
     .uri = "/", 
     .method = HTTP_GET, 
@@ -106,6 +114,18 @@ httpd_uri_t uri_led4_off = {
     .handler = led4_off_handler, 
     .user_ctx = NULL};
 
+httpd_uri_t uri_led5_on = {     
+    .uri = "/led5on", 
+    .method = HTTP_GET, 
+    .handler = led5_on_handler, 
+    .user_ctx = NULL};
+
+httpd_uri_t uri_led5_off = {
+    .uri = "/led5off", 
+    .method = HTTP_GET, 
+    .handler = led5_off_handler, 
+    .user_ctx = NULL};      
+
 httpd_uri_t uri_led15_on = {     
 
     .uri = "/led15on", 
@@ -132,6 +152,9 @@ esp_err_t get_req_handler(httpd_req_t *req) {
     return ESP_OK;
 }
 
+
+/* ADD/EDIT FUNCTIONS FOR MORE/LESS BUTTONS HERE */
+// Functions to handle LED ON/OFF request
 esp_err_t led_on_handler(httpd_req_t *req) {
     gpio_set_level(LED_PIN2, 1);
     led_state = 1;
@@ -148,43 +171,56 @@ esp_err_t led_off_handler(httpd_req_t *req) {
 
 esp_err_t led3_on_handler(httpd_req_t *req) {
     gpio_set_level(LED_PIN3, 1);
-    httpd_resp_send(req, "LED3 ON", HTTPD_RESP_USE_STRLEN);
+    httpd_resp_send(req, on_resp, strlen(on_resp));
     return ESP_OK;
 }
 
 esp_err_t led3_off_handler(httpd_req_t *req) {
     gpio_set_level(LED_PIN3, 0);
-    httpd_resp_send(req, "LED3 OFF", HTTPD_RESP_USE_STRLEN);
+    httpd_resp_send(req, off_resp, strlen(off_resp));
     return ESP_OK;
 }
 
 esp_err_t led4_on_handler(httpd_req_t *req) {
     gpio_set_level(LED_PIN4, 1);
-    httpd_resp_send(req, "LED4 ON", HTTPD_RESP_USE_STRLEN);
+    httpd_resp_send(req, on_resp, strlen(on_resp));
     return ESP_OK;
 }
 
 esp_err_t led4_off_handler(httpd_req_t *req) {
     gpio_set_level(LED_PIN4, 0);
-    httpd_resp_send(req, "LED4 OFF", HTTPD_RESP_USE_STRLEN);
+    httpd_resp_send(req, off_resp, strlen(off_resp));
+    return ESP_OK;
+}
+
+esp_err_t led5_on_handler(httpd_req_t *req) {
+    gpio_set_level(LED_PIN5, 1);
+    httpd_resp_send(req, on_resp, strlen(on_resp));
+    return ESP_OK;
+}
+
+esp_err_t led5_off_handler(httpd_req_t *req) {
+    gpio_set_level(LED_PIN5, 0);
+    httpd_resp_send(req, off_resp, strlen(off_resp));
     return ESP_OK;
 }
 
 esp_err_t led15_on_handler(httpd_req_t *req) {
     gpio_set_level(LED_PIN15, 1);
-    httpd_resp_send(req, "LED15 ON", HTTPD_RESP_USE_STRLEN);
+    httpd_resp_send(req, on_resp, strlen(on_resp));
     return ESP_OK;
 }
 
 esp_err_t led15_off_handler(httpd_req_t *req) {
     gpio_set_level(LED_PIN15, 0);
-    httpd_resp_send(req, "LED15 OFF", HTTPD_RESP_USE_STRLEN);
+    httpd_resp_send(req, off_resp, strlen(off_resp));
     return ESP_OK;
 }
 
 //SETUP_SERVER
+/* CHANGE CONFIG.MAX_URI_HANDLERS IF BUTTONS GOES ABOVE 10!!!*/
+/*Add new httpd_register_uri_handler functions for each button you add*/
 // Function to set up the HTTP server
-
 httpd_handle_t setup_server(void)
 {
     httpd_config_t config = HTTPD_DEFAULT_CONFIG();
@@ -200,7 +236,9 @@ config.uri_match_fn = httpd_uri_match_wildcard; // Optional, for flexible URI ma
         httpd_register_uri_handler(server, &uri_led3_on); 
         httpd_register_uri_handler(server, &uri_led3_off); 
         httpd_register_uri_handler(server, &uri_led4_on); 
-        httpd_register_uri_handler(server, &uri_led4_off); 
+        httpd_register_uri_handler(server, &uri_led4_off);
+        httpd_register_uri_handler(server, &uri_led5_on);
+        httpd_register_uri_handler(server, &uri_led5_off); 
         httpd_register_uri_handler(server, &uri_led15_on); 
         httpd_register_uri_handler(server, &uri_led15_off); 
     }
@@ -265,6 +303,7 @@ void wifi_manager_sta_disconnected(void *pvParameter) {
 void app_main()
 {
     // Only erase NVS if you want to force a clean start (not recommended for production)
+    
     // ESP_ERROR_CHECK(nvs_flash_erase());
     ESP_ERROR_CHECK(nvs_flash_init());
     ESP_ERROR_CHECK(esp_netif_init());
@@ -279,20 +318,19 @@ void app_main()
 
     // GPIO initialization and web server setup can be done after WiFi is up,
     // or you can keep them here if you want them always available.
-    gpio_reset_pin(LED_PIN2);
-    gpio_set_direction(LED_PIN2, GPIO_MODE_OUTPUT); 
-    gpio_reset_pin(LED_PIN3); 
-    gpio_set_direction(LED_PIN3, GPIO_MODE_OUTPUT); 
-    gpio_reset_pin(LED_PIN4); 
-    gpio_set_direction(LED_PIN4, GPIO_MODE_OUTPUT); 
-    gpio_reset_pin(LED_PIN15); 
-    gpio_set_direction(LED_PIN15, GPIO_MODE_OUTPUT); 
+    gpio_reset_pin(LED_PIN2);  gpio_set_direction(LED_PIN2, GPIO_MODE_OUTPUT); 
+    gpio_reset_pin(LED_PIN3);  gpio_set_direction(LED_PIN3, GPIO_MODE_OUTPUT); 
+    gpio_reset_pin(LED_PIN4);  gpio_set_direction(LED_PIN4, GPIO_MODE_OUTPUT);
+    gpio_reset_pin(LED_PIN5);  gpio_set_direction(LED_PIN5, GPIO_MODE_OUTPUT); 
+    gpio_reset_pin(LED_PIN15); gpio_set_direction(LED_PIN15, GPIO_MODE_OUTPUT); 
     led_state = 0;
     ESP_LOGI(TAG, "LEDs initialised to 0 ... ...\n");
 }
 
 
-
+//default name and password are
+//name: esp32
+//pwd: esp32pwd
 
 
 
