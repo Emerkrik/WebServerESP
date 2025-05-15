@@ -1,0 +1,21 @@
+{
+  "C_Cpp.intelliSenseEngine": "default",
+  "idf.espIdfPathWin": "C:\\Users\\emeri\\esp\\v5.4\\esp-idf",
+  "idf.pythonInstallPath": "c:\\espressif\\tools\\idf-python\\3.11.2\\python.exe",
+  "idf.openOcdConfigs": [
+    "board/esp32c6-bridge.cfg"
+  ],
+  "idf.portWin": "COM7",
+  "idf.toolsPathWin": "c:\\espressif",
+  "idf.flashType": "UART",
+  "idf.customExtraVars": {
+    "OPENOCD_SCRIPTS": "C:\\Users\\emeri\\.espressif\\tools\\openocd-esp32\\v0.12.0-esp32-20240318/openocd-esp32/share/openocd/scripts",
+    "IDF_CCACHE_ENABLE": "1",
+    "ESP_ROM_ELF_DIR": "C:\\Users\\emeri\\.espressif\\tools\\esp-rom-elfs\\20240305/",
+    "IDF_TARGET": "esp32c6"
+  },
+  "files.associations": {
+    "esp_netif_types.h": "c",
+    "esp_http_server.h": "c"
+  }
+}

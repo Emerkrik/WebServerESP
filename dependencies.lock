@@ -1,0 +1,32 @@
+dependencies:
+  ankayca/esp32-wifi-manager:
+    component_hash: 24264c8cc4d618d2c94eb2ba55dd3f0d2f5143e89e05f9afe3ae3087b4adc78e
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=4.2'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 0.0.4
+  espressif/mdns:
+    component_hash: 3ec0af5f6bce310512e90f482388d21cc7c0e99668172d2f895356165fc6f7c5
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=5.0'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 1.8.2
+  idf:
+    source:
+      type: idf
+    version: 5.4.0
+direct_dependencies:
+- ankayca/esp32-wifi-manager
+- espressif/mdns
+- idf
+manifest_hash: 79808da09192f3c58b27e177cde441c2364df132123af4a8dd2081e97d87c5ac
+target: esp32c6
+version: 2.0.0
